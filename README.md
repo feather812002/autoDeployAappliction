@@ -14,9 +14,9 @@ The jar file will be created in the build/libs directory.
 ```
 java -jar build/libs/autoDeployAappliction.jar  <adminPassword> <sourceNtfFileName> <targetUpdateNsfFilePath> <targetUpdateServerName>
 ```
-adminPassword: the password of the admin user
-sourceNtfFileName: the path to the source nsf/ntf file
-targetUpdateNsfFilePath: the path to the target update nsf file
-targetUpdateServerName: the name of the target update server
+adminPassword: the password of the admin user /n    
+sourceNtfFileName: the path to the source nsf/ntf file /n
+targetUpdateNsfFilePath: the path to the target update nsf file /n
+targetUpdateServerName: the name of the target update server /n
 
-sourceNtfFileName can't same with targetUpdateNsfFilePath.
+sourceNtfFileName can't same with targetUpdateNsfFilePath.  /n
