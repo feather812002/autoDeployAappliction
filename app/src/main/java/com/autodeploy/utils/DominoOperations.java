@@ -72,7 +72,9 @@ public class DominoOperations {
           targetUpdateServerName
         );
         //create a new database on the target server with DbDirectory
-        targetDb = sourceDbOnServer.createFromTemplate (this.targetUpdateServerName, sourceDbOnServer.getTitle(), true);
+        DbDirectory dir = session.getDbDirectory(this.targetUpdateServerName);
+        targetDb=dir.createDatabase( this.targetUpdateNsfFilePath);
+        // targetDb = sourceDbOnServer.createFromTemplate (this.targetUpdateServerName, sourceDbOnServer.getTitle(), true);
         
       }
 
