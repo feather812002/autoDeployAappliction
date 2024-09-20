@@ -24,9 +24,12 @@ public class DominoOperations {
   public int performOperations() throws NotesException {
     Database sourceDbOnServer = null;
     Database sourceDb = session.getDatabase(null, this.sourceNtfFileName);
+    String sourceDBFileName = null;
     if(sourceDb.isOpen()){
+      sourceDBFileName = sourceDb.getFileName();
       System.out.println("Success: Open source database on local server successfully."+sourceDb.getTitle());
-    }
+    };
+    
     Database targetDb = session.getDatabase(
       this.targetUpdateServerName,
       this.targetUpdateNsfFilePath
@@ -112,12 +115,21 @@ public class DominoOperations {
       System.out.println("Error: Failed to open the database.");
       e.printStackTrace();
     } finally {
+      sourceDbOnServer= session.getDatabase(
+        this.targetUpdateServerName,
+        sourceDBFileName
+      );
+      if(sourceDbOnServer.isOpen()){
+        sourceDbOnServer.remove();
+        System.out.println("Success: Remove source database "+sourceDBFileName+" on target server successfully.");
+      }
       if (sourceDb != null) {
         sourceDb.recycle();
       }
       if (targetDb != null) {
         targetDb.recycle();
       }
+    
       if(sourceDbOnServer!=null){
         
         sourceDbOnServer.recycle();
